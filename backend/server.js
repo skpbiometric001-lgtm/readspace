@@ -23,7 +23,11 @@ const PORT         = process.env.PORT         || 5000;
 // "https://readspace.netlify.app,https://www.readspace.in" — handy since
 // Netlify gives you a *.netlify.app URL plus your own custom domain.
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-const ALLOWED_ORIGINS = FRONTEND_URL.split(',').map(o => o.trim()).filter(Boolean);
+// .replace strips any trailing slash — "https://x.netlify.app/" and
+// "https://x.netlify.app" must be treated as the same origin, since browsers
+// never send a trailing slash in the Origin header but it's an easy typo to
+// make when copy-pasting a URL into an env var.
+const ALLOWED_ORIGINS = FRONTEND_URL.split(',').map(o => o.trim().replace(/\/+$/, '')).filter(Boolean);
 const ADMIN_EMAIL  = process.env.ADMIN_EMAIL   || 'admin@readspace.in';
 const MONGODB_URI  = process.env.MONGODB_URI   || '';
 
@@ -55,7 +59,6 @@ app.use('/api/settings', require('./routes/settings'));   // GET/PATCH /api/sett
 app.use('/api', require('./routes/reviews'));         // GET /api/reviews, /api/admin/reviews…
 app.use('/api/feedback', require('./routes/feedback'));   // POST/GET/PATCH/DELETE /api/feedback…
 app.use('/api/analytics', require('./routes/analytics')); // GET /api/analytics
-app.use('/api/gallery', require('./routes/gallery'));      // GET /api/gallery, admin POST/PATCH/DELETE /api/gallery/:id
 
 // ── HEALTH CHECK ──────────────────────────────────────────
 app.get('/api/health', (req, res) => {
