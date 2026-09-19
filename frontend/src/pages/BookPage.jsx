@@ -6,8 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { jsPDF } from 'jspdf';
 import { BrandMark } from '../context/BrandingContext.jsx';
 
-const API_URL    = import.meta.env.VITE_API_URL    || 'http://localhost:5000';
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+import { API_URL, SOCKET_URL } from '../config.js';
 
 // Both AC and Non-AC seats are simple numbered ranges — no fixed floor
 // plan, no upper limit. The admin sets acSeatFrom/acSeatTo and

@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { io } from 'socket.io-client';
 import { useBranding, BrandMark } from '../context/BrandingContext.jsx';
-
-const API_URL    = import.meta.env.VITE_API_URL    || 'http://localhost:5000';
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+import { API_URL, SOCKET_URL } from '../config.js';
 
 // Category icons are just cosmetic — matched loosely against the admin's
 // tag text so common categories (AC/Non-AC/Common) get a nice emoji, while

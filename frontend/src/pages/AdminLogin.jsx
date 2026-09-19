@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useBranding, BrandMark } from '../context/BrandingContext.jsx';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import { API_URL } from '../config.js';
 
 export default function AdminLogin() {
   const { companyName } = useBranding();

@@ -59,6 +59,7 @@ app.use('/api/settings', require('./routes/settings'));   // GET/PATCH /api/sett
 app.use('/api', require('./routes/reviews'));         // GET /api/reviews, /api/admin/reviews…
 app.use('/api/feedback', require('./routes/feedback'));   // POST/GET/PATCH/DELETE /api/feedback…
 app.use('/api/analytics', require('./routes/analytics')); // GET /api/analytics
+app.use('/api/gallery', require('./routes/gallery'));      // GET /api/gallery, admin POST/PATCH/DELETE /api/gallery/:id
 
 // ── HEALTH CHECK ──────────────────────────────────────────
 app.get('/api/health', (req, res) => {

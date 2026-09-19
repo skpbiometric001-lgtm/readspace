@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const API_URL    = import.meta.env.VITE_API_URL    || 'http://localhost:5000';
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+import { API_URL, SOCKET_URL } from '../config.js';
 
 // Fallback shown until /api/settings responds (or if the admin never customizes it).
 const DEFAULT_BRANDING = {
